@@ -1,153 +1,423 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Потрошитель Бабушек | Официальный сайт</title>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-  <style>
-    body {
-      font-family: 'Roboto', sans-serif;
-      background: #0e0e0e;
-      color: white;
-      margin: 0;
-      padding: 0;
-      overflow-x: hidden;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Культура России</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Roboto', sans-serif;
+            background: linear-gradient(to bottom, #fdfcfb, #e2d1c3);
+            color: #333;
+            overflow-x: hidden;
+        }
+        header {
+            background: linear-gradient(90deg, #1e3c72, #2a5298);
+            color: white;
+            padding: 30px;
+            text-align: center;
+            z-index: 1000;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            height: auto;
+        }
+        header h1 {
+            font-family: 'Lora', serif;
+            font-size: 3rem;
+            margin: 0;
+        }
+        header p {
+            font-size: 1.2rem;
+            margin: 10px 0;
+        }
+        nav {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            background: #2a5298;
+            padding: 15px 0;
+            position: sticky;
+            z-index: 1000;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: 500;
+            padding: 8px 15px;
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+        nav a:hover {
+            background: #1e3c72;
+        }
+        .hero {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 500px;
+            background: url('https://upload.wikimedia.org/wikipedia/commons/6/68/Red_Square_in_Moscow%2C_Russia_-_SN852447.jpg') no-repeat center center/cover;
+            color: white;
+            text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.8);
+            position: relative;
+            overflow: hidden;
+        }
+        .hero h2 {
+            font-size: 3rem;
+            margin: 0;
+            animation: fadeIn 2s ease-in-out;
+    
+        }
+        .hero p {
+            margin-top: 15px;
+            font-size: 1.5rem;
+            animation: fadeIn 2s ease-in-out 0.5s;
+            
+        }
+        .scroll-down {
+            position: absolute;
+            bottom: 30px;
+            font-size: 1.2rem;
+            animation: bounce 2s infinite;
+        }
+        .section {
+            padding: 60px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .section h2 {
+            font-family: 'Lora', serif;
+            font-size: 2.5rem;
+            color: #2a5298;
+            margin-bottom: 30px;
+            position: relative;
+            display: inline-block;
+        }
+        .section h2::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -10px;
+            width: 50px;
+            height: 4px;
+            background: #1e3c72;
+        }
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        .card {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+            overflow: hidden;
+            transition: transform 0.4s, box-shadow 0.4s;
+        }
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.2);
+        }
+        .card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            animation: zoomIn 2s ease;
+        }
+        .card h3 {
+            font-size: 1.5rem;
+            margin: 20px;
+            color: #333;
+        }
+        .card p {
+            margin: 0 20px 20px;
+            font-size: 1rem;
+            color: #666;
+            line-height: 1.6;
+        }
+        footer {
+            background: #2a5298;
+            color: white;
+            text-align: center;
+            padding: 30px 0;
+            margin-top: 40px;
+        }
+        footer p {
+            margin: 0;
+            font-size: 1rem;
+        }
 
-    header {
-      background-color: #1f1f1f;
-      padding: 20px 0;
-      text-align: center;
-      font-size: 36px;
-      letter-spacing: 3px;
-      color: #ffcc00;
-      text-transform: uppercase;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
-    }
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
 
-    section {
-      padding: 50px 10%;
-      text-align: center;
-      animation: fadeIn 1.5s ease-in-out;
-    }
+        @keyframes zoomIn {
+            0% { transform: scale(0.8); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
+        }
 
-    h2 {
-      font-size: 28px;
-      margin-bottom: 20px;
-      color: #ffcc00;
-      text-transform: uppercase;
-    }
+        @keyframes slideInFromTop {
+            0% { transform: translateY(-100%); opacity: 0; }
+            100% { transform: translateY(0); opacity: 1; }
+        }
 
-    .song-card {
-      background: #2a2a2a;
-      margin: 20px auto;
-      padding: 20px;
-      border-radius: 10px;
-      width: 80%;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
-      transition: transform 0.3s ease;
-    }
-
-    .song-card:hover {
-      transform: scale(1.05);
-    }
-
-    .song-title {
-      font-size: 24px;
-      margin-bottom: 10px;
-      color: #ffcc00;
-    }
-
-    .song-text {
-      font-size: 18px;
-      color: #ddd;
-      line-height: 1.5;
-    }
-
-    .song-card:nth-child(odd) {
-      background-color: #333;
-    }
-
-    footer {
-      background: #1f1f1f;
-      text-align: center;
-      padding: 10px;
-      color: #aaa;
-      position: absolute;
-      bottom: 0;
-      width: 100%;
-    }
-
-    footer a {
-      color: #ffcc00;
-      text-decoration: none;
-    }
-
-    @keyframes fadeIn {
-      0% { opacity: 0; transform: translateY(30px); }
-      100% { opacity: 1; transform: translateY(0); }
-    }
-  </style>
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+.author-note {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 0.9rem;
+    font-style: italic;
+    color: rgba(255, 255, 255, 0.8);
+    background: rgba(30, 60, 114, 0.7);
+    padding: 5px 10px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    white-space: nowrap;
+}
+    </style>
 </head>
 <body>
+    <header>
+    <h1>Культура России</h1>
+    <p>Добро пожаловать в мир великого наследия!</p>
+    <div class="author-note">Сайтик написан Антоном, над проектом трудились ещё несколько типов, Аркаша лох</div>
+</header>
 
-  <header>
-    Потрошитель Бабушек | Официальный сайт
-  </header>
+    <nav>
+        <a href="#history">История</a>
+        <a href="#art">Искусство</a>
+        <a href="#traditions">Традиции</a>
+        <a href="#music">Музыка</a>
+        <a href="#literature">Литература</a>
+        <a href="#cuisine">Кухня</a>
+        <a href="#architecture">Архитектура</a>
+        <a href="#cinema">Кинематограф</a>
+    </nav>
 
-  <section>
-    <h2>Дискография</h2>
-
-    <!-- Песни -->
-    <div class="song-card">
-      <div class="song-title">Сучки, Сучки, Доллары</div>
-      <div class="song-text">
-        Аркаша Семенюта на Opel’е Зефире, катается по городу, все его видят в эфире.<br>
-        Сучки, сучки, доллары, в рюкзаке конфеты, он развозит сладости, как будто это лето.<br>
-        Погляди на его тачку, блестит, как новый трофей, в каждой коробке шоколад, сахар — белый снег, эй!<br>
-        "Вкусняшки, сладости, берите на ура!" Он на Opel’е Зефире, брат, с вами навсегда!
-      </div>
+    <div class="hero">
+        <h2>Откройте для себя богатую культуру России</h2>
+        <p>Уникальное наследие, объединяющее Восток и Запад</p>
+        <div class="scroll-down">↓</div>
     </div>
 
-    <div class="song-card">
-      <div class="song-title">Зефирная Волна</div>
-      <div class="song-text">
-        Зефир на крыше, полетели в облаках, в кармане сотка, в рюкзаке — бухло для братков.<br>
-        Потрошитель Бабушек, волна катится в топе, рифмы рвут, как нож, на сцене тут мои бойцы!<br>
-        Сучки в ритме, они ждут меня на углу, я прибуду скоро — скоро и возьму свою долю.<br>
-        Зефир на пятом, в глазах огонь, у меня с этим стилем — никто не потянет!
-      </div>
-    </div>
+    <section id="history" class="section">
+        <h2>История</h2>
+        <div class="cards">
+            <div class="card">
+                <img src="https://avatars.mds.yandex.net/i?id=d8f773f3893b1cd3a70705beaae73f0e_l-9137964-images-thumbs&n=13" alt="Древняя Русь">
+                <h3>Древняя Русь</h3>
+                <p>История России начинается с Киевской Руси — одного из крупнейших государств средневековья. Она охватывала территорию от Балтики до Черного моря, развивая традиции славянских племён.</p>
+            </div>
+            <div class="card">
+                <img src="https://cdn.culture.ru/images/7a33c64b-f92e-56b9-8f65-03a2937d8ea5" alt="Эпоха Петра Великого">
+                <h3>Эпоха Петра Великого</h3>
+                <p>В XVIII веке Петр I провел масштабные реформы, построил Санкт-Петербург — новый центр культуры и искусства, и открыл Россию миру.</p>
+            </div>
+            <div class="card">
+                <img src="https://cdn.culture.ru/images/5525e98b-97a0-5ad5-a561-9f505aeaa69f" alt="Александр Невский">
+                <h3>Александр Невский</h3>
+                <p>Александр Невский защитил Русь от западных врагов и укрепил государство, став символом национального единства.</p>
+            </div>
+            <div class="card">
+                <img src="https://avatars.mds.yandex.net/get-entity_search/510165/862440154/S600xU_2x" alt="Отечественная война">
+                <h3>Отечественная война 1812 года</h3>
+                <p>Война с Наполеоном показала дух единства русского народа, а герои, такие как Кутузов и Багратион, стали символами отваги.</p>
+            </div>
+        </div>
+    </section>
 
-    <div class="song-card">
-      <div class="song-title">Шоколад и Виски</div>
-      <div class="song-text">
-        Респект всем тем, кто с нами на века, я на битах как вино, лучше с каждым годом.<br>
-        Шоколад и виски, конфеты на раздаче, но только для тех, кто с нами, брат, ты — не значишь.<br>
-        Треки, как пули, они летят в сердца, Потрошитель Бабушек — ты попал под колеса!<br>
-        Я не сдамся, покорю эту сцену, зефирный стиль — знай, не перепишешь!
-      </div>
-    </div>
-    
-  </section>
+    <section id="art" class="section">
+        <h2>Искусство</h2>
+        <div class="cards">
+            <div class="card">
+                <img src="https://cdn.culture.ru/images/7b1be915-739e-5783-aef0-6f3b02aa5051" alt="Иконы">
+                <h3>Иконопись</h3>
+                <p>Иконы занимают центральное место в русской культуре, объединяя духовность и искусство. Андрей Рублев стал одним из величайших мастеров этого жанра.</p>
+            </div>
+            <div class="card">
+                <img src="https://avatars.mds.yandex.net/i?id=0176c5c3ad62df8ef9ff7012bce84581_l-5337299-images-thumbs&n=13" alt="Третьяковская галерея">
+                <h3>Третьяковская галерея</h3>
+                <p>Дом русской живописи, где представлены работы Репина, Айвазовского, Сурикова и других выдающихся художников.</p>
+            </div>
+            <div class="card">
+                <img src="https://cdn.culture.ru/images/2635ea0c-255a-5e94-95c5-52ecd7a0fcb8" alt="Балет">
+                <h3>Русский балет</h3>
+                <p>Русский балет стал всемирно известен благодаря постановкам Мариинского и Большого театров, а также выдающимся хореографам.</p>
+            </div>
+            <div class="card">
+                <img src="https://sun9-71.userapi.com/impg/UR1FwgFAl3k6Y0k9si__PM4MaEK2eVV22vopnQ/K7H-1dBBC9k.jpg?size=1000x589&quality=95&sign=6e500cdf13795fbda59659da96c66d13&c_uniq_tag=09hQx-IqEvNIkIIAUhnfauSfkv98mxfYM1eYqOYtHTc&type=album" alt="Фаберже">
+                <h3>Ювелирное искусство</h3>
+                <p>Яйца Фаберже — символ роскоши и таланта русских ювелиров, прославивших свое мастерство на весь мир.</p>
+            </div>
+        </div>
+    </section>
 
-  <footer>
-    <p>Все права защищены &copy; 2024 | <a href="#">Контакты</a></p>
-  </footer>
+    <section id="traditions" class="section">
+        <h2>Традиции</h2>
+        <div class="cards">
+            <div class="card">
+                <img src="https://cdn.culture.ru/images/209def1b-d3c8-5a3b-a96d-1735a59dc559" alt="Масленица">
+                <h3>Масленица</h3>
+                <p>Масленица — это яркий праздник встречи весны, сопровождающийся блинами, хороводами и сжиганием чучела зимы.</p>
+            </div>
+            <div class="card">
+                <img src="https://cdn.culture.ru/images/37ce999d-e0f5-54a3-949b-4e5d39ec9600" alt="Свадебные обряды">
+                <h3>Свадебные обряды</h3>
+                <p>Русские свадебные традиции включают в себя каравай, выкуп невесты и веселые песни, отражающие уникальный колорит.</p>
+            </div>
+            <div class="card">
+                <img src="https://cdn.culture.ru/images/8bbe90dd-b342-52fc-95c2-25cc89335363" alt="Матрёшка">
+                <h3>Матрёшка</h3>
+                <p>Матрёшка — символ русского народного творчества, объединяющий простоту и многослойность национальной культуры.</p>
+            </div>
+            <div class="card">
+                <img src="https://cs14.pikabu.ru/post_img/2024/03/04/4/og_og_170953093221626944.jpg" alt="Русская баня">
+                <h3>Русская баня</h3>
+                <p>Русская баня — древняя традиция, сочетающая отдых, очищение тела и души, а также общение в уютной атмосфере.</p>
+            </div>
+        </div>
+    </section>
 
-  <script>
-    // Анимация появления элементов при прокрутке страницы
-    const songCards = document.querySelectorAll('.song-card');
-    window.addEventListener('scroll', () => {
-      songCards.forEach(card => {
-        const cardPosition = card.getBoundingClientRect().top;
-        if (cardPosition < window.innerHeight - 100) {
-          card.style.animation = 'fadeIn 1.5s ease-in-out forwards';
-        }
-      });
-    });
-  </script>
+    <section id="music" class="section">
+        <h2>Музыка</h2>
+        <div class="cards">
+            <div class="card">
+                <img src="https://cdnn21.img.ria.ru/images/22596/71/225967150_0:308:1632:1532_1920x0_80_0_0_b4599158e2f84b854aa62bf672af75fb.jpg" alt="Чайковский">
+                <h3>Пётр Чайковский</h3>
+                <p>Чайковский — великий русский композитор, автор балетов "Щелкунчик", "Лебединое озеро" и "Спящая красавица".</p>
+            </div>
+            <div class="card">
+                <img src="https://cdn.culture.ru/images/f115afef-8454-5831-ab7f-d63f59e98697" alt="Балалайка">
+                <h3>Балалайка</h3>
+                <p>Балалайка — традиционный музыкальный инструмент, ставший символом русской народной музыки.</p>
+            </div>
+            <div class="card">
+                <img src="https://cdn-storage-media.tass.ru/resize/976x648/tass_media/2022/03/06/8/1646598688228599_8a1XstoM.jpg" alt="Фёдор Шаляпин">
+                <h3>Фёдор Шаляпин</h3>
+                <p>Знаменитый бас, покоривший мировые сцены, стал символом русского оперного искусства.</p>
+            </div>
+            <div class="card">
+                <img src="https://adshi.vl.muzkult.ru/media/2022/12/01/1286438268/Igor_Stravinskij.jpg" alt="Стравинский">
+                <h3>Игорь Стравинский</h3>
+                <p>Композитор-новатор, чьи произведения, такие как "Весна священная", изменили мировую музыку.</p>
+            </div>
+        </div>
+    </section>
 
+    <section id="literature" class="section">
+        <h2>Литература</h2>
+        <div class="cards">
+            <div class="card">
+                <img src="https://cdn.culture.ru/images/e8c8c8cb-0e31-513f-9426-62f58bcee988" alt="Пушкин">
+                <h3>Александр Пушкин</h3>
+                <p>Пушкин — основоположник современного русского языка и автор бессмертных произведений, таких как "Евгений Онегин".</p>
+            </div>
+            <div class="card">
+                <img src="https://cdn.culture.ru/images/54f55f8e-9d96-5bac-b7a5-60dea27385de" alt="Толстой">
+                <h3>Лев Толстой</h3>
+                <p>Автор эпических романов "Война и мир" и "Анна Каренина", которые прославили русскую литературу на весь мир.</p>
+            </div>
+            <div class="card">
+                <img src="https://aif-s3.aif.ru/images/034/687/f677c31ff8dde7cb6a0aa976e9745463.JPG" alt="Достоевский">
+                <h3>Фёдор Достоевский</h3>
+                <p>Философ и писатель, чьи романы, такие как "Преступление и наказание", исследуют глубины человеческой души.</p>
+            </div>
+            <div class="card">
+                <img src="https://cdn.culture.ru/images/fcf13404-390a-569d-9341-7fe4e9d939ae" alt="Чехов">
+                <h3>Антон Чехов</h3>
+                <p>Мастер короткого рассказа и драматург, чьи пьесы остаются актуальными и любимыми по всему миру.</p>
+            </div>
+        </div>
+    </section>
+    <section id="cuisine" class="section">
+        <h2>Кухня</h2>
+        <div class="cards">
+            <div class="card">
+                <img src="https://i.pinimg.com/originals/ab/d3/9c/abd39c924ac5626f530e3afd3d3b4f2c.jpg" alt="Борщ">
+                <h3>Борщ</h3>
+                <p>Борщ — знаменитый русский суп, основным ингредиентом которого является свекла, придающая блюду характерный красный цвет и насыщенный вкус.</p>
+            </div>
+            <div class="card">
+                <img src="https://sun9-43.userapi.com/impg/qVyLL8dt8oZE6KguzMw4Gu22qbkcrRDvZPBg7Q/zimGht67ni0.jpg?size=1200x797&quality=95&sign=1f6be1b061883e39dd22507f3cebeff0&c_uniq_tag=KyoLS7bt2UyB0tUDq7uzpp_IvYAOE3ZCVTxvB9zs7TQ&type=album" alt="Блины">
+                <h3>Блины</h3>
+                <p>Блины — традиционное русское блюдо, символизирующее солнце. Они готовятся из теста и могут подаваться с различными начинками, от икры до варенья.</p>
+            </div>
+            <div class="card">
+                <img src="https://sun9-5.userapi.com/impg/HFvWguKtRWZEVjiAqrmodZPZ-Xy4Tt_NID37sg/ZOdsqLfYPSU.jpg?size=816x1088&quality=96&sign=5313006b8fbe506ce2d969f0ca71c31c&type=album" alt="Пельмени">
+                <h3>Пельмени</h3>
+                <p>Пельмени — классическое русское блюдо, представляющее собой варёные пельмени с мясом, часто подаются со сметаной или уксусом.</p>
+            </div>
+            <div class="card">
+                <img src="https://i.pinimg.com/736x/b1/1b/50/b11b50c94ed851d9e6614ac5563ff5f7.jpg" alt="Русский холодец">
+                <h3>Холодец</h3>
+                <p>Холодец — традиционное блюдо из застывшего мясного бульона с кусочками мяса, часто подается как закуска на праздничных столах.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Секция для архитектуры -->
+    <section id="architecture" class="section">
+        <h2>Архитектура</h2>
+        <div class="cards">
+            <div class="card">
+                <img src="https://сафаритур.рф/uploads/structure/image-m0id246.jpg" alt="Красная площадь">
+                <h3>Красная площадь</h3>
+                <p>Красная площадь в Москве — один из символов России, окружённый архитектурными шедеврами, такими как Кремль и Собор Василия Блаженного.</p>
+            </div>
+            <div class="card">
+                <img src="https://avatars.mds.yandex.net/i?id=d482988a28ae49cc1226c4f31b855af0_l-10100414-images-thumbs&n=13" alt="Санкт-Петербург">
+                <h3>Санкт-Петербург</h3>
+                <p>Санкт-Петербург — город с величественными дворцами, каналами и мостами, отражающий элегантность и роскошь русской архитектуры.</p>
+            </div>
+            <div class="card">
+                <img src="https://ic.pics.livejournal.com/anton_i_masha/74760968/910048/910048_2000.jpg" alt="Московский Кремль">
+                <h3>Московский Кремль</h3>
+                <p>Московский Кремль — сердце России и важнейший исторический памятник, который служил резиденцией русских царей.</p>
+            </div>
+            <div class="card">
+                <img src="https://www.mos.ru/upload/newsfeed/afisha/images2EXcD8(5)(9).jpg" alt="Собор Василия Блаженного">
+                <h3>Собор Василия Блаженного</h3>
+                <p>Этот знаменитый храм на Красной площади, с яркими куполами и уникальным архитектурным стилем, является одним из самых известных символов России.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Секция для кинематографа -->
+    <section id="cinema" class="section">
+        <h2>Кинематограф</h2>
+        <div class="cards">
+            <div class="card">
+                <img src="https://www.peramuseum.org/Repo/SliderAndBoxs/Andrei-Rublev-2.jpg" alt="Андрей Рублёв">
+                <h3>Андрей Рублёв</h3>
+                <p>Фильм Андрея Тарковского, один из величайших в истории российского кино, рассказывает о жизни и творчестве знаменитого иконописца.</p>
+            </div>
+            <div class="card">
+                <img src="https://avatars.dzeninfra.ru/get-zen_doc/5192222/pub_6252bfab78501c7bec92adff_6252c13499ed501d05440f3e/scale_1200" alt="Тарковский">
+                <h3>Тарковский</h3>
+                <p>Андрей Тарковский — один из величайших режиссёров, чьи фильмы, такие как "Солярис" и "Сталкер", оказали глубокое влияние на мировой кинематограф.</p>
+            </div>
+            <div class="card">
+                <img src="https://cdn.culture.ru/images/af64512f-a7ac-5557-b58c-3c9a736d222f" alt="Мосфильм">
+                <h3>Мосфильм</h3>
+                <p>Мосфильм — крупнейшая киностудия СССР, ставшая символом русского кинематографа, где были сняты такие культовые фильмы, как "Война и мир".</p>
+            </div>
+            <div class="card">
+                <img src="https://avatars.dzeninfra.ru/get-zen_doc/51182/pub_5b8cc447d8fe0200ae0d1dae_5b8cc4d34ed03b00aa5b9f95/scale_1200" alt="Советский кинематограф">
+                <h3>Советский кинематограф</h3>
+                <p>Советский кинематограф подарил миру такие шедевры, как "Летят журавли" и "Офицеры", которые стали частью мировой киноистории.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2024 Культура России. Все права защищены.</p>
+    </footer>
 </body>
 </html>
