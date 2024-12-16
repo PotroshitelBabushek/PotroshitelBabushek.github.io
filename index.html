@@ -1,7 +1,153 @@
 <!DOCTYPE html>
-<html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Потрошитель Бабушек | Официальный сайт</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Roboto', sans-serif;
+      background: #0e0e0e;
+      color: white;
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+    }
+
+    header {
+      background-color: #1f1f1f;
+      padding: 20px 0;
+      text-align: center;
+      font-size: 36px;
+      letter-spacing: 3px;
+      color: #ffcc00;
+      text-transform: uppercase;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    }
+
+    section {
+      padding: 50px 10%;
+      text-align: center;
+      animation: fadeIn 1.5s ease-in-out;
+    }
+
+    h2 {
+      font-size: 28px;
+      margin-bottom: 20px;
+      color: #ffcc00;
+      text-transform: uppercase;
+    }
+
+    .song-card {
+      background: #2a2a2a;
+      margin: 20px auto;
+      padding: 20px;
+      border-radius: 10px;
+      width: 80%;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
+      transition: transform 0.3s ease;
+    }
+
+    .song-card:hover {
+      transform: scale(1.05);
+    }
+
+    .song-title {
+      font-size: 24px;
+      margin-bottom: 10px;
+      color: #ffcc00;
+    }
+
+    .song-text {
+      font-size: 18px;
+      color: #ddd;
+      line-height: 1.5;
+    }
+
+    .song-card:nth-child(odd) {
+      background-color: #333;
+    }
+
+    footer {
+      background: #1f1f1f;
+      text-align: center;
+      padding: 10px;
+      color: #aaa;
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+    }
+
+    footer a {
+      color: #ffcc00;
+      text-decoration: none;
+    }
+
+    @keyframes fadeIn {
+      0% { opacity: 0; transform: translateY(30px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
 <body>
-<h1>Доброе утро, потрошитель бабушек на связи. Земенюта в деле</h1>
-<p>А ещё у меня уже 2 года не стоит хуй</p>
+
+  <header>
+    Потрошитель Бабушек | Официальный сайт
+  </header>
+
+  <section>
+    <h2>Дискография</h2>
+
+    <!-- Песни -->
+    <div class="song-card">
+      <div class="song-title">Сучки, Сучки, Доллары</div>
+      <div class="song-text">
+        Аркаша Семенюта на Opel’е Зефире, катается по городу, все его видят в эфире.<br>
+        Сучки, сучки, доллары, в рюкзаке конфеты, он развозит сладости, как будто это лето.<br>
+        Погляди на его тачку, блестит, как новый трофей, в каждой коробке шоколад, сахар — белый снег, эй!<br>
+        "Вкусняшки, сладости, берите на ура!" Он на Opel’е Зефире, брат, с вами навсегда!
+      </div>
+    </div>
+
+    <div class="song-card">
+      <div class="song-title">Зефирная Волна</div>
+      <div class="song-text">
+        Зефир на крыше, полетели в облаках, в кармане сотка, в рюкзаке — бухло для братков.<br>
+        Потрошитель Бабушек, волна катится в топе, рифмы рвут, как нож, на сцене тут мои бойцы!<br>
+        Сучки в ритме, они ждут меня на углу, я прибуду скоро — скоро и возьму свою долю.<br>
+        Зефир на пятом, в глазах огонь, у меня с этим стилем — никто не потянет!
+      </div>
+    </div>
+
+    <div class="song-card">
+      <div class="song-title">Шоколад и Виски</div>
+      <div class="song-text">
+        Респект всем тем, кто с нами на века, я на битах как вино, лучше с каждым годом.<br>
+        Шоколад и виски, конфеты на раздаче, но только для тех, кто с нами, брат, ты — не значишь.<br>
+        Треки, как пули, они летят в сердца, Потрошитель Бабушек — ты попал под колеса!<br>
+        Я не сдамся, покорю эту сцену, зефирный стиль — знай, не перепишешь!
+      </div>
+    </div>
+    
+  </section>
+
+  <footer>
+    <p>Все права защищены &copy; 2024 | <a href="#">Контакты</a></p>
+  </footer>
+
+  <script>
+    // Анимация появления элементов при прокрутке страницы
+    const songCards = document.querySelectorAll('.song-card');
+    window.addEventListener('scroll', () => {
+      songCards.forEach(card => {
+        const cardPosition = card.getBoundingClientRect().top;
+        if (cardPosition < window.innerHeight - 100) {
+          card.style.animation = 'fadeIn 1.5s ease-in-out forwards';
+        }
+      });
+    });
+  </script>
+
 </body>
 </html>
